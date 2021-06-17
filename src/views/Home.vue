@@ -31,7 +31,7 @@ export default {
 					{
 						name: 'מייל',
 						type: 'email',
-						validation: (email)=> {
+						validation: (email) => {
 							const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 							return re.test(String(email).toLowerCase());
 						},
@@ -40,7 +40,7 @@ export default {
 					, {
 						name: 'סיסמא',
 						type: 'password',
-						validation: (value) => { return value.length>1 },
+						validation: (value) => { return value.length > 1 },
 						invalidMsg: ''
 					}
 				],
@@ -54,8 +54,26 @@ export default {
 		}
 	},
 	methods: {
-		logForm(form) {
-			console.log(form, 'from app.vue')
+		async logForm(form) {
+			const user = { email: form[0].value, password: form[1].value }
+			console.log(user, 'from app.vue')
+			await this.$store.dispatch({
+				type: 'login',
+				userCred: user
+			});
+			console.log(this.loggedInUser);
+			// try {
+
+			// }
+			// catch (err) {
+			// 	console.log('error');
+			// 	throw err
+			// }
+		}
+	},
+	computed: {
+		loggedInUser() {
+			return this.$store.getters.loggedInUser
 		}
 	}
 }
