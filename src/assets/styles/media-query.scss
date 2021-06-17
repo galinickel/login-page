@@ -1,0 +1,24 @@
+@media screen and(max-width: 1050px) {
+    .home .graphic img {
+        width: 30rem;
+    }
+
+}
+
+@media screen and(max-width: 850px) {
+    .home .graphic img {
+        width: 20rem;
+    }
+
+}
+
+@media screen and(max-width: 850px) {
+    .home {
+        .graphic {
+            display: none;
+        }
+        .my-form {}
+    }
+
+
+}

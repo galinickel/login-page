@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+}
+
+.home {
+    display: flex;
+    height: 100vh;
+    &>section{
+        width: 60rem;
+    }
+    .graphic {
+        background-color: #FFDCDC;
+        display: flex;
+        justify-content: flex-end;
+
+        img{
+            width: 40rem;
+        }
+    }
+    .login{
+        direction: rtl;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .input-placeholder{
+            top: 0;
+        }
+        .my-button{
+            margin-top: 30px;
+        }
+    }
+}
