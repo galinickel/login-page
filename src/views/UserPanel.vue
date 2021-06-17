@@ -33,6 +33,11 @@ export default {
 				this.isButtonLoading = false
 			}, 1500);
 		}
+	},
+	computed:{
+		loggedInUser(){
+			return this.$store.getters.loggedInUser
+		}
 	}
 }
 </script>
