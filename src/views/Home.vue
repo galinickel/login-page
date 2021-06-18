@@ -62,6 +62,7 @@ export default {
 				userCred: user
 			});
 			console.log(this.loggedInUser);
+			this.$router.push('/user')
 			// try {
 
 			// }

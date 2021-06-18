@@ -16,6 +16,9 @@ export const store= new Vuex.Store({
   mutations: {
     setUser(state, { user }) {
       state.loggedInUser = user;
+  },
+  resetUser(state){
+    state.loggedInUser = {}
   }
   },
   actions: {
@@ -28,6 +31,9 @@ export const store= new Vuex.Store({
         console.log('userStore: Error in login', err)
         throw err
       }
+    },
+    logout({commit}) {
+      commit({type:'resetUser'})
     }
   },
   modules: {

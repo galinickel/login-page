@@ -1,36 +1,33 @@
 <template>
-	<div class="about">
-		<h1>This is an about page</h1>
+	<div class="user-panel">
+		<GalisLoader/>
+		<h1>Welcome to User Panel</h1>
+		{{loggedInUser}}
 		<GalisButton
-		text="כניסה"
+		text="יציאה"
 			color="#18c746"
 			:isLoading="isButtonLoading"
-			@click.native="toggleLoader"
+			@click.native="logOut"
 		/>
-		<GalisInput :userInput="userInput" />
 	</div>
 </template>
 
 <script>
-import { GalisButton, GalisInput } from 'gali-package'
+import { GalisButton, GalisLoader } from 'gali-package'
 export default {
-	components: { GalisButton, GalisInput },
+	components: { GalisButton,GalisLoader },
 	data() {
 		return {
-			isButtonLoading: false,
-			userInput: {
-				name: 'מייל',
-				type: 'text',
-				validation: (value) => { return value.length < 5 && value.length > 1 },
-				invalidMsg: 'כתובת המייל איתה נרשמת לחשבונית ירוקה'
-			}
+			isButtonLoading: false
 		}
 	},
 	methods: {
-		toggleLoader() {
+		logOut() {
 			this.isButtonLoading = true
 			setTimeout(() => {
 				this.isButtonLoading = false
+				this.$store.dispatch({type:'logout'})
+				this.$router.push('/')
 			}, 1500);
 		}
 	},
@@ -38,6 +35,9 @@ export default {
 		loggedInUser(){
 			return this.$store.getters.loggedInUser
 		}
+	},
+	created(){
+		console.log(this.loggedInUser);
 	}
 }
 </script>
