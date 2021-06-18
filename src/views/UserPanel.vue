@@ -1,12 +1,13 @@
 <template>
 	<div class="user-panel">
-		<GalisLoader/>
+		<GalisLoader 			:isLoading="loadingToggler"
+/>
 		<h1>Welcome to User Panel</h1>
 		{{loggedInUser}}
 		<GalisButton
 		text="יציאה"
 			color="#18c746"
-			:isLoading="isButtonLoading"
+			:isLoading="loadingToggler"
 			@click.native="logOut"
 		/>
 	</div>
@@ -18,14 +19,15 @@ export default {
 	components: { GalisButton,GalisLoader },
 	data() {
 		return {
-			isButtonLoading: false
+			loadingToggler: false
 		}
 	},
 	methods: {
 		logOut() {
-			this.isButtonLoading = true
+			this.loadingToggler = true
+
 			setTimeout(() => {
-				this.isButtonLoading = false
+				this.loadingToggler = false
 				this.$store.dispatch({type:'logout'})
 				this.$router.push('/')
 			}, 1500);
