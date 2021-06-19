@@ -5,35 +5,110 @@
 body {
     margin: 0;
     font-size: 16px;
+    font-family: 'almoni-neue-dl', sans-serif;
+    color: #23445A;
+}
+
+.brand-logo {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 175px;
 }
 
 .home {
     display: flex;
     height: 100vh;
-    &>section{
+
+    &>section {
         width: 60rem;
     }
+
     .graphic {
         background-color: #FFDCDC;
         display: flex;
         justify-content: flex-end;
 
-        img{
+        img {
             width: 40rem;
         }
     }
-    .login{
+
+    .login {
         direction: rtl;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
-        .input-placeholder{
+        .input-placeholder {
             top: 0;
         }
-        .my-button{
+
+        .my-button {
             margin-top: 30px;
+        }
+
+        h2 {
+            margin-bottom: 6%;
+        }
+    }
+}
+
+.user-page {
+    display: flex;
+
+    >section {
+        width: 100%;
+
+    }
+
+    .user-panel {
+        background-image: url(https://imgur.com/mdo542n.jpg);
+        background-size: 45rem 60rem;
+        background-repeat: no-repeat;
+        height: 100vh;
+
+    }
+
+    :nth-child(3) .user-info {
+        direction: rtl;
+        margin: 2rem 7rem;
+        display: flex;
+        flex-direction: column;
+
+        >div {
+            display: flex;
+            flex-wrap: wrap;
+
+            .field {
+                position: relative;
+                padding: 3%;
+
+                :nth-child(2) {
+                    width: 200px;
+                    border: 1px solid #23445A;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+
+                :first-child {
+                    top: 20px;
+                    right: 45px;
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+    .user-button {
+        direction: ltr;
+        place-self: flex-end;
+        display: flex;
+        flex-direction: column;
+
+        .logout-msg {
+            direction: rtl;
         }
     }
 }

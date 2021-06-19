@@ -1,25 +1,39 @@
 <template>
-	<div class="user-panel">
-		<GalisLoader 			:isLoading="loadingToggler"
-/>
-		<h1>Welcome to User Panel</h1>
-		{{loggedInUser}}
-		<GalisButton
-		text="יציאה"
-			color="#18c746"
-			:isLoading="loadingToggler"
-			@click.native="logOut"
-		/>
+	<div class="user-page">
+		<GalisLoader :isLoading="loadingToggler" />
+		<section class="user-panel"></section>
+
+		<section>
+			<section class="user-info">
+				<h2>כל הפרטים שלך, ממש כאן</h2>
+				<div>
+					<div class="field" v-for="field in userToDisplay" :key="field.label">
+						<div>{{ field.label }}</div>
+						<div>{{ field.name }}</div>
+					</div>
+				</div>
+				<div class="user-button">
+					<p class="logout-msg">מוכנים לצאת?</p>
+					<GalisButton
+						text="יציאה"
+						color="#18c746"
+						:isLoading="loadingToggler"
+						@click.native="logOut"
+					/>
+				</div>
+			</section>
+		</section>
 	</div>
 </template>
 
 <script>
 import { GalisButton, GalisLoader } from 'gali-package'
 export default {
-	components: { GalisButton,GalisLoader },
+	components: { GalisButton, GalisLoader },
 	data() {
 		return {
-			loadingToggler: false
+			loadingToggler: false,
+			userToDisplay: {}
 		}
 	},
 	methods: {
@@ -28,18 +42,27 @@ export default {
 
 			setTimeout(() => {
 				this.loadingToggler = false
-				this.$store.dispatch({type:'logout'})
+				this.$store.dispatch({ type: 'logout' })
 				this.$router.push('/')
 			}, 1500);
 		}
 	},
-	computed:{
-		loggedInUser(){
+	computed: {
+		loggedInUser() {
 			return this.$store.getters.loggedInUser
 		}
 	},
-	created(){
+	created() {
 		console.log(this.loggedInUser);
+		const { firstName, lastName, idNumber, email, phone, subscriptionExpirationDate, activationDate } = this.loggedInUser
+		this.userToDisplay = [
+			{ name: firstName, label: "שם פרטי" },
+			{ name: lastName, label: "שם משפחה" },
+			{ name: idNumber, label: "מספר ת.ז" },
+			{ name: email, label: "כתובת אימייל" },
+			{ name: phone, label: "מספר טלפון" },
+			{ name: subscriptionExpirationDate, label: "מנוי עד:" },
+			{ name: activationDate, label: "רשום מתאריך:" }]
 	}
 }
 </script>

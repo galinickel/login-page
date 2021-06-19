@@ -1,6 +1,30 @@
-@media screen and(max-width: 1050px) {
+@media screen and(max-width: 1200px) {
     .home .graphic img {
         width: 30rem;
+    }
+
+    .user-page {
+        .user-panel {
+            background-size: 40rem 60rem;
+        }
+
+        :nth-child(3) {
+            width: 70%;
+        }
+    }
+
+}
+
+@media screen and(max-width: 1000px) {
+
+    .user-page {
+        .user-panel {
+            background-position-x: 30%
+        }
+
+        :nth-child(3) {
+            width: 70%;
+        }
     }
 
 }
@@ -10,6 +34,16 @@
         width: 20rem;
     }
 
+    .user-page {
+        display: block;
+    }
+
+    .user-panel {
+        display: none;
+        
+    }
+
+
 }
 
 @media screen and(max-width: 850px) {
@@ -17,7 +51,6 @@
         .graphic {
             display: none;
         }
-        .my-form {}
     }
 
 
