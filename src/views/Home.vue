@@ -54,20 +54,11 @@ export default {
 			this.loadingToggler = true;
 			this.form.submitButton.isLoading = true;
 			const user = { email: form[0].value, password: form[1].value };
-			console.log(user, "from app.vue");
 			await this.$store.dispatch({
 				type: "login",
 				userCred: user,
 			});
 			this.$router.push("/user");
-
-			// try {
-
-			// }
-			// catch (err) {
-			// 	console.log('error');
-			// 	throw err
-			// }
 		},
 	},
 	computed: {

@@ -53,7 +53,6 @@ export default {
 		}
 	},
 	created() {
-		console.log(this.loggedInUser);
 		const { firstName, lastName, idNumber, email, phone, subscriptionExpirationDate, activationDate } = this.loggedInUser
 		this.userToDisplay = [
 			{ name: firstName, label: "שם פרטי" },

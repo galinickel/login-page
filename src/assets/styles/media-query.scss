@@ -30,8 +30,10 @@
 }
 
 @media screen and(max-width: 850px) {
-    .home .graphic img {
-        width: 20rem;
+    .home {
+        .graphic {
+            display: none;
+        }
     }
 
     .user-page {
@@ -40,18 +42,23 @@
 
     .user-panel {
         display: none;
-        
+
+    }
+
+    .user-page :nth-child(3) {
+        width: 100%;
+        .user-info{
+            margin: 5%;
+        }
     }
 
 
 }
 
-@media screen and(max-width: 850px) {
-    .home {
-        .graphic {
-            display: none;
-        }
-    }
+@media screen and(max-width: 550px) {
+.user-page :nth-child(3) .user-info{
+    margin: 0 ;
+}
 
 
 }
